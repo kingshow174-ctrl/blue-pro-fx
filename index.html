@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blue Pro FX</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
 </head>
 <body>
   <header>
@@ -15,22 +15,34 @@
       <option>USD/JPY</option>
       <option>AUD/USD</option>
       <option>USD/CAD</option>
+      <option>USD/CHF</option>
+      <option>NZD/USD</option>
+      <option>EUR/GBP</option>
+      <option>EUR/JPY</option>
+      <option>GBP/JPY</option>
       <option>XAU/USD</option>
     </select>
-    <select id="interval">
-      <option value="15min">M15</option>
-      <option value="1h" selected>H1</option>
-      <option value="4h">H4</option>
-      <option value="1day">D1</option>
-    </select>
-    <button id="load">Load</button>
+    <div id="tfs">
+      <button data-i="1min">M1</button>
+      <button data-i="5min">M5</button>
+      <button data-i="15min">M15</button>
+      <button data-i="30min">M30</button>
+      <button data-i="1h" class="active">H1</button>
+      <button data-i="4h">H4</button>
+      <button data-i="1day">D1</button>
+      <button data-i="1week">W1</button>
+      <button data-i="1month">MN</button>
+    </div>
     <span id="status"></span>
   </header>
   <main>
-    <div id="chart"></div>
+    <div id="wrap">
+      <div id="legend"></div>
+      <div id="chart"></div>
+    </div>
     <aside id="panel"><h2>Signals</h2><div id="signals"></div></aside>
   </main>
   <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

@@ -7,16 +7,18 @@ const app = express();
 
 app.get("/api/candles", async (req, res) => {
   try {
-    const { symbol = "EUR/USD", interval = "1h", count = "300" } = req.query;
-    const url = new URL("https://api.twelvedata.com/time_series");
-    url.search = new URLSearchParams({
+    const { symbol = "EUR/USD", interval = "1h", count = "5000", end_date } = req.query;
+    const params = {
       symbol,
       interval,
-      outputsize: String(Math.min(+count || 300, 1000)),
+      outputsize: String(Math.min(+count || 5000, 5000)),
       order: "ASC",
       timezone: "UTC",
       apikey: process.env.TWELVE_DATA_KEY,
-    });
+    };
+    if (end_date) params.end_date = end_date;
+    const url = new URL("https://api.twelvedata.com/time_series");
+    url.search = new URLSearchParams(params);
     const r = await fetch(url);
     res.status(r.status).json(await r.json());
   } catch (e) {

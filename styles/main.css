@@ -1,12 +1,17 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #0b1220; color: #e6edf7; font-family: system-ui, sans-serif; height: 100vh; display: flex; flex-direction: column; }
-header { display: flex; gap: 10px; align-items: center; padding: 10px 14px; background: #101a2e; border-bottom: 1px solid #1d2b47; }
-header h1 { font-size: 18px; color: #3d8bff; margin-right: 10px; }
-select, button { background: #16233f; color: #e6edf7; border: 1px solid #27406e; padding: 6px 10px; border-radius: 6px; }
-button { background: #2563eb; cursor: pointer; }
-#status { font-size: 12px; color: #8fa3c7; }
+body { background: #131722; color: #d1d4dc; font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif; height: 100vh; display: flex; flex-direction: column; }
+header { display: flex; gap: 12px; align-items: center; padding: 6px 12px; background: #131722; border-bottom: 1px solid #2a2e39; flex-wrap: wrap; }
+header h1 { font-size: 16px; color: #2962ff; margin-right: 6px; }
+select { background: #1e222d; color: #d1d4dc; border: 1px solid #2a2e39; padding: 5px 8px; border-radius: 4px; }
+#tfs { display: flex; gap: 2px; }
+#tfs button { background: transparent; color: #b2b5be; border: 0; padding: 5px 9px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+#tfs button:hover { background: #2a2e39; }
+#tfs button.active { color: #2962ff; background: #1e222d; }
+#status { font-size: 12px; color: #787b86; margin-left: auto; }
 main { flex: 1; display: flex; min-height: 0; }
-#chart { flex: 1; min-width: 0; }
-#panel { width: 280px; padding: 12px; background: #101a2e; border-left: 1px solid #1d2b47; overflow-y: auto; }
-#panel h2 { font-size: 14px; margin-bottom: 10px; color: #8fa3c7; }
-@media (max-width: 700px) { main { flex-direction: column; } #panel { width: 100%; height: 160px; border-left: 0; } }
+#wrap { flex: 1; min-width: 0; position: relative; }
+#chart { position: absolute; inset: 0; }
+#legend { position: absolute; top: 8px; left: 12px; z-index: 5; font-size: 12px; pointer-events: none; font-variant-numeric: tabular-nums; }
+#panel { width: 280px; padding: 12px; background: #131722; border-left: 1px solid #2a2e39; overflow-y: auto; }
+#panel h2 { font-size: 13px; margin-bottom: 10px; color: #787b86; }
+@media (max-width: 700px) { main { flex-direction: column; } #panel { width: 100%; height: 140px; border-left: 0; border-top: 1px solid #2a2e39; } }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Pro FX</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <header>
+    <h1>Blue Pro FX</h1>
+    <select id="symbol">
+      <option>EUR/USD</option>
+      <option>GBP/USD</option>
+      <option>USD/JPY</option>
+      <option>AUD/USD</option>
+      <option>USD/CAD</option>
+      <option>XAU/USD</option>
+    </select>
+    <select id="interval">
+      <option value="15min">M15</option>
+      <option value="1h" selected>H1</option>
+      <option value="4h">H4</option>
+      <option value="1day">D1</option>
+    </select>
+    <button id="load">Load</button>
+    <span id="status"></span>
+  </header>
+  <main>
+    <div id="chart"></div>
+    <aside id="panel"><h2>Signals</h2><div id="signals"></div></aside>
+  </main>
+  <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

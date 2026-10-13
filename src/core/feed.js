@@ -1,24 +1,15 @@
-import { CONFIG } from "../config.js";
-
-export async function fetchCandles(symbol, interval, count = CONFIG.CANDLES) {
-  const url = new URL("https://api.twelvedata.com/time_series");
-  url.search = new URLSearchParams({
-    symbol,
-    interval,
-    outputsize: count,
-    order: "ASC",
-    timezone: "UTC",
-    apikey: CONFIG.TWELVE_DATA_KEY,
-  });
-
+export async function fetchCandles(symbol, interval, count = 300) {
+  const url = `/api/candles?symbol=${encodeURIComponent(symbol)}&interval=${interval}&count=${count}`;
   const res = await fetch(url);
   const data = await res.json();
   if (data.status === "error" || !data.values) {
-    throw new Error(data.message || "Twelve Data request failed");
+    throw new Error(data.message || "Candle request failed");
   }
 
   return data.values.map((v) => ({
-    time: Math.floor(Date.parse(v.datetime.replace(" ", "T") + (v.datetime.length > 10 ? "Z" : "T00:00:00Z")) / 1000),
+    time: Math.floor(
+      Date.parse(v.datetime.replace(" ", "T") + (v.datetime.length > 10 ? "Z" : "T00:00:00Z")) / 1000
+    ),
     open: +v.open,
     high: +v.high,
     low: +v.low,
